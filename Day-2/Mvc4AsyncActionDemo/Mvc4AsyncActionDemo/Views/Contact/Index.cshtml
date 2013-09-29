@@ -1,0 +1,52 @@
+﻿@using Mvc4AsyncActionDemo.Models.Contact
+@model Mvc4AsyncActionDemo.Models.Contact.ContactFormModel
+
+@{
+    ViewBag.Title = "Contacts";
+}
+
+<h2>Contacts</h2>
+<div id="contactsContainer">
+    <table>
+        <thead>
+            @if (Model.Contacts.Any())
+            {
+                <tr>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Email</th>
+                    <th>&nbsp;</th>
+                </tr>
+            }
+        </thead>
+        <tbody>
+            @if (Model.Contacts.Any())
+            {
+                foreach (var contact in Model.Contacts)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => contact.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => contact.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => contact.Email)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = contact.Id })
+                    </td>
+                </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>No Contacts</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.Partial("_Create", Model.NewContact)
+</div>

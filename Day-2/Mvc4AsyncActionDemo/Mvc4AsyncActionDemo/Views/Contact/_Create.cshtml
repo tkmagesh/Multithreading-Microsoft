@@ -1,0 +1,13 @@
+﻿@model Mvc4AsyncActionDemo.Models.Contact.CreateContactModel
+
+@using (Html.BeginForm("Create", "Contact"))
+ {
+     @Html.ValidationSummary(false)
+     
+     <fieldset>
+         <legend>Contact</legend>
+         @Html.EditorForModel(Model)
+     </fieldset>
+     
+     <input id="btnCreateContact" type="submit" value="Create Contact"/>
+ }
